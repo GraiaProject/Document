@@ -6,7 +6,7 @@ sidebar-title: 参数解析器
 
 # 问题引入
 
-我们在 [`Hello World!`](/broadcast/basic/hello-world) 中使用了以下形式声明事件的监听：
+我们在 [`Hello World!`](/docs/broadcast/basic/hello-world) 中使用了以下形式声明事件的监听：
 
 ```python
 @broadcast.receiver(ExampleEvent)
@@ -37,7 +37,7 @@ async def event_receiver(event: ExampleEvent, event_2: ExampleEvent):
 
 而当我们将参数部分修改为这样（其余修改部分省略）：
 
-::: important
+:::important
 这段代码将会报错！
 :::
 
@@ -88,7 +88,7 @@ event_3 ExampleEvent 3.0
 
 根据这些信息，我们就可以在事件上扩展事件监听器中参数的部分，从而实现另外一种特别的编程方式。
 
-> 准确的说，参数解析这个过程是被独立出来的，如果你对这个部分抱有兴趣，欢迎阅读遁入深渊（Into the abyss）篇的 [执行器与被执行对象](/broadcast/abyss/executor-and-exectarget)，但如果你还只是初学，那么现在就还不是看这篇文档的时候。
+> 准确的说，参数解析这个过程是被独立出来的，如果你对这个部分抱有兴趣，欢迎阅读遁入深渊（Into the abyss）篇的 [执行器与被执行对象](/b/broadcast/abyss/executor-and-exectarget)，但如果你还只是初学，那么现在就还不是看这篇文档的时候。
 
 从 “参数解析” 这个名字中，我们大概就能了解到它的用途，而获取到信息也只不过是其中一环而已，接下来我们将让它 “输出” 些东西。
 
@@ -122,6 +122,8 @@ async def event_receiver(
   |    `name`    | 当前解析的参数的名称，通常类型为 `str`，也就是字符串         |
   | `annotation` | 当前解析的参数所设定的类型注解                               |
   |  `default`   | 当前解析的参数所设定的默认值。注意：默认值与类型注解可能不是一个类型。 |
+  |   `event`    | 监听器监听到的事件实例                                       |
+  | `broadcast`  | 当前 `Broadcast` 实例                                        |
 
 - `catch` 方法的返回值**通常**就是当前解析的参数将会传入的值。
 

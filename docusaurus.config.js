@@ -11,7 +11,7 @@ module.exports = {
       title: 'Broadcast Control',
       links: [
         {
-          to: 'docs/intro',
+          to: 'docs/broadcast/basic/hello-world',
           activeBasePath: 'docs',
           label: '文档',
           position: 'left',
