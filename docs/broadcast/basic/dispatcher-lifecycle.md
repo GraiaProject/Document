@@ -1,7 +1,7 @@
 ---
-id: dispatcher
-title: 参数解析器
-sidebar-title: 参数解析器
+id: dispatcher-lifecycle
+title: 参数解析器的生命周期
+sidebar-title: 参数解析器的生命周期
 
 ---
 

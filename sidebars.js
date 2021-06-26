@@ -12,13 +12,14 @@ module.exports = {
             'event-and-post', // 事件与推送
             'dispatcher', // 参数解析器
             'dispatcher-lifecycle', // 参数解析器的生命周期
-            'decorator', // 参数装饰器
+            /*'decorator', // 参数装饰器
             'depend', // 依赖注入
             'middleware', //中间件
             'interrupt', // 中断
             'namespace' // 命名空间
+	    */
           ].map(value => `broadcast/basic/${value}`)
-        },
+        },/*
         {
           type: 'category',
           label: "Adcance", // 高级
@@ -46,7 +47,7 @@ module.exports = {
             'more-than-eventbus' // 不只是事件总线
           ].map(value => `broadcast/abyss/${value}`)
         },
-        'broadcast/the-future' // 展望未来
+        'broadcast/the-future' // 展望未来*/
       ]
     },
   ],
