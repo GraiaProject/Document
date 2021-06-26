@@ -2,7 +2,6 @@
 id: dispatcher-lifecycle
 title: 参数解析器的生命周期
 sidebar-title: 参数解析器的生命周期
-
 ---
 
 # 参数解析器的生命周期
