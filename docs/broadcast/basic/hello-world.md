@@ -21,14 +21,14 @@ poetry add graia-broadcast
 
 在程序中导入主实现类 `Broadcast` 和前置标准库 `asyncio`:
 
-```py
+```python
 import asyncio
 from graia.broadcast import Broadcast
 ```
 
 获取事件循环, 并实例化 `Broadcast`:
 
-```py
+```python
 loop = asyncio.get_event_loop()
 broadcast = Broadcast(loop=loop)
 ```
@@ -45,7 +45,7 @@ broadcast = Broadcast(loop=loop)
 
 导入相关基类:
 
-```py
+```python
 from graia.broadcast.entities.event import Dispatchable
 from graia.broadcast.entities.dispatcher import BaseDispatcher
 ```
@@ -54,7 +54,7 @@ from graia.broadcast.entities.dispatcher import BaseDispatcher
  - 包含一继承了 `BaseDispatcher`, 名为 `Dispatcher` 的类声明；
  - 继承 `Dispatchable`，尽管这项在最新版中可选，但还是建议，以保证 `findEvent` 方法可以使用。
 
-```py
+```python
 class ExampleEvent(Dispatchable):
     class Dispatcher(BaseDispatcher):
         @staticmethod
@@ -64,7 +64,7 @@ class ExampleEvent(Dispatchable):
 
 若该类继承了 `Dispatchable`，你就可以通过 `Broadcast.findEvent` 方法检查事件声明是否有效：
 
-```py
+```python
 print(Broadcast.findEvent("ExampleEvent"))
 # 传入事件类的名称, 若返回为 None, 则事件声明无效
 ```
@@ -73,7 +73,7 @@ print(Broadcast.findEvent("ExampleEvent"))
 
 通过使用装饰器方法 `Broadcast.receiver` 声明一个事件的监听:
 
-```py
+```python
 @broadcast.receiver(ExampleEvent) # 传入字符串 "ExampleEvent" 效果一样
 async def event_receiver(event: ExampleEvent):
     print("Hello World!")
@@ -88,15 +88,16 @@ async def event_receiver(event: ExampleEvent):
 创建事件就是实例化事件类, 在这里, `ExampleEvent` 只需要简单的实例化就好，
 因为也没什么其他的方法。
 
-```py
+```python
 event = ExampleEvent()
 ```
 
 然后通过 `Broadcast.postEvent` 方法即可广播事件到监听器:
 
-```py
+```python
 broadcast.postEvent(event)
 ```
 
 通过 `asyncio` 的相关接口（比如 run 一个 do nothing 的异步函数）运行程序，将打印一个 `"Hello World!"`.  
 很好，你已经运行起来了一个最小最小的，基于 `Broadcast Control` 的程序实例，现在我们将正式开始此行。 
+

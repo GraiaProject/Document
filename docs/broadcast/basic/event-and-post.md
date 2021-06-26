@@ -13,7 +13,7 @@ sidebar-title: 事件与推送
 
 通过 `Broadcast` 实例中的 `postEvent`, 传入一个实例就可以了：
 
-```py
+```python
 event = SomeEvent()
 broadcast.postEvent(event)
 ```
