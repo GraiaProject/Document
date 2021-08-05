@@ -13,13 +13,12 @@ module.exports = {
             'dispatcher', // 参数解析器
             'dispatcher-lifecycle', // 参数解析器的生命周期
             'decorator', // 参数装饰器
-            /*'depend', // 依赖注入
+            'depend', // 依赖注入
             'middleware', //中间件
             'interrupt', // 中断
             'namespace' // 命名空间
-	    */
           ].map(value => `broadcast/basic/${value}`)
-        },/*
+        },
         {
           type: 'category',
           label: "Adcance", // 高级
@@ -38,7 +37,7 @@ module.exports = {
           type: 'category',
           label: "Abyss", // 遁入深渊
           items: [
-            'about-abyss',
+            'about-abyss', // 关于深渊(Abyss)
             'executor-and-exectarget', // 执行器(Executor)与被执行对象(ExecTarget)
             'dispatchable-with-schema', // 使用模型(Model)
             'just-executor-no-eventbus', // 只用执行器
@@ -47,7 +46,7 @@ module.exports = {
             'more-than-eventbus' // 不只是事件总线
           ].map(value => `broadcast/abyss/${value}`)
         },
-        'broadcast/the-future' // 展望未来*/
+        'broadcast/the-future' // 展望未来
       ]
     },
   ],
