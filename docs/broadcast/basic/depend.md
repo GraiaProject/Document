@@ -53,3 +53,30 @@ async def group_members(group_id: str = GetParam('group_id')):
 
 :::
 
+我们声明以下 Depend 实现:
+
+```python
+@db_session
+async def getGroup(group_id: str = GetParam('group_id')):
+    result = Group.findone(id=group_id)
+    if not result:
+        raise ExecutionStop()
+        # 这个在之后的 advance/event-propagation-and-priority 有讲到
+        # 在这里只需要理解这是跳出去并且放弃执行就可以了
+        # 实际上, 这里应该是 raise HttpErrorCode(403) 才对.
+
+    return result
+```
+
+应用到逻辑中:
+
+```py
+@bcc.receiver(HttpGetRequestEvent, decorators=[
+    Endpoint("/group/members"),
+    Method.GET
+])
+async def group_members(group: Group = Depend(getGroup)):
+    ...
+```
+
+这样就可以直接获取到 `Group` 了, 而这就是 Depend 最简单的应用.
