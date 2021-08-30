@@ -6,7 +6,7 @@ sidebar-title: 代理模式(Proxy Mode)
 
 :::tip
 
-关于这里所提到的 Dispatcher 的调用顺序问题, 简单的答复你可以参考 [dispatcher-mixin](docs/broadcast/advance/dispatcher-mixin) 一章, 如果需要更详细的, 记住一句话, 这句话也是我们在开发时遵循的规范:
+关于这里所提到的 Dispatcher 的调用顺序问题, 简单的答复你可以参考 [dispatcher-mixin](dispatcher-mixin) 一章, 如果需要更详细的, 记住一句话, 这句话也是我们在开发时遵循的规范:
 
 局部先于全局, 有既是有, 无既是无.
 

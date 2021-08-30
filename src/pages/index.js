@@ -16,8 +16,8 @@ function HomepageHeader() {
         <div className={styles.buttons}>
           <Link
             className="button button--secondary button--lg"
-            to="/docs/intro">
-            Docusaurus Tutorial - 5min ⏱️
+            to="http://localhost:3000/docs/broadcast/basic/hello-world">
+            Get Started
           </Link>
         </div>
       </div>
@@ -33,7 +33,7 @@ export default function Home() {
       description="Description will go into a meta tag in <head />">
       <HomepageHeader />
       <main>
-        <HomepageFeatures />
+        这里还什么都没有呢... 我这之后再写.
       </main>
     </Layout>
   );
