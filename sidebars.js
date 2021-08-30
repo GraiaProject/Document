@@ -15,7 +15,8 @@ module.exports = {
             'decorator', // 参数装饰器
             'depend', // 依赖注入
             'interrupt', // 中断
-            'namespace' // 命名空间
+            'namespace', // 命名空间
+            'exception-handle'
           ].map(value => `broadcast/basic/${value}`)
         },
         {
