@@ -14,7 +14,6 @@ module.exports = {
             'dispatcher-lifecycle', // 参数解析器的生命周期
             'decorator', // 参数装饰器
             'depend', // 依赖注入
-            'middleware', //中间件
             'interrupt', // 中断
             'namespace' // 命名空间
           ].map(value => `broadcast/basic/${value}`)

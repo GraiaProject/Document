@@ -1,3 +1,6 @@
+const lightCodeTheme = require('prism-react-renderer/themes/github');
+const darkCodeTheme = require('prism-react-renderer/themes/dracula');
+
 module.exports = {
   title: 'Broadcast Control Docs',
   tagline: 'The Docs for Broadcast Control',
@@ -9,7 +12,7 @@ module.exports = {
   themeConfig: {
     navbar: {
       title: 'Broadcast Control',
-      links: [
+      items: [
         {
           to: 'docs/broadcast/basic/hello-world',
           activeBasePath: 'docs',
@@ -52,9 +55,9 @@ module.exports = {
       copyright: `Copyright © ${new Date().getFullYear()} Graia Project. 由 Docusaurus Ⅱ 强力驱动.`,
     },
     prism: {
-      additionalLanguages: ['python'],
-      theme: require('prism-react-renderer/themes/dracula'),
-    }
+      theme: lightCodeTheme,
+      darkTheme: darkCodeTheme,
+    },
   },
   presets: [
     [
