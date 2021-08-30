@@ -20,7 +20,7 @@ module.exports = {
           position: 'left',
         },
         {
-          href: 'https://github.com/GreyElaina/BroadcastControl',
+          href: 'https://github.com/GreyElaina/Document',
           label: 'Repo on GitHub',
           position: 'right',
         },
@@ -32,6 +32,10 @@ module.exports = {
         {
           title: '相关项目',
           items: [
+            {
+              label: 'Avilla',
+              href: 'https://github.com/GraiaProject/Avilla'
+            },
             {
               label: 'Broadcast Control',
               href: 'https://github.com/GraiaProject/BroadcastControl'
@@ -48,6 +52,10 @@ module.exports = {
             {
               label: 'QQ Group',
               href: 'https://jq.qq.com/?_wv=1027&k=VXp6plBD',
+            },
+            {
+              label: 'Github Organization',
+              href: 'https://github.com/GraiaProject',
             }
           ],
         }
