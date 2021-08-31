@@ -1,0 +1,240 @@
+---
+id: quick-start
+title: 快速开始
+---
+
+:::note
+因为截止写作时(2021.8.31), Avilla 仅有官方实现的 OneBot 支持,
+所以我们在此仅使用来自 [miraigo/onebot(go-cqhttp)](https://github.com/Mrs4s/go-cqhttp) 的 Tencent QQ 协议支持,
+但理论上, 以下实现也应可以使用:
+
+ - miraijvm/cqhttp-mirai (onebot): https://github.com/yyuueexxiinngg/onebot-kotlin;
+ - oicq.js/onebot (onebot): https://github.com/takayama-lily/node-onebot;
+ - xq/onebot (onebot): 未经测试, 所属生态非开源体系, 不推荐使用;
+ - miraijvm/native-support::cqhttp (onebot legecy): 不推荐使用;
+
+因为 avilla/protocol::onebot 事实上并未严格按照 OneBot v11 进行适配,
+所以当你在使用时发现了问题, 请务必通过 [Issue](https://github.com/GraiaProject/Avilla/issues)
+汇报问题给我们.
+
+最后, 非常感谢你们的支持.
+:::
+
+> 以下内容有部分摘选自 [go-cqhttp 帮助中心](https://docs.go-cqhttp.org/).
+
+首先, 我们需要一个实现了 [OneBot 标准](https://github.com/botuniverse/onebot) 的协议端实现,
+这里我们选用 [miraigo/onebot(go-cqhttp)](https://github.com/Mrs4s/go-cqhttp),
+这个协议端提供了对即时聊天软件 Tencent QQ 的 OneBot 协议支持,
+且从各种角度上都比较适合我们进行开发.
+
+在[这里](https://github.com/Mrs4s/go-cqhttp/releases)下载最新版本的 `go-cqhttp`
+
+关于选用的二进制文件类型, 以下可以参考:
+
+ - `Windows x86`: `go-cqhttp_windows_386.exe`;
+ - `Windows x64`: `go-cqhttp_windows_amd64.exe`;
+ - `Windows Arm`: `go-cqhttp_windows_armv7.exe`;
+ - `Linux x86`: `go-cqhttp_linux_386.tar.gz`;
+ - `Linux x64`: `go-cqhttp_linux_amd64.tar.gz`;
+ - `Linux arm(armv7)`: `go-cqhttp_linux_armv7.tar.gz`;
+ - `Linux arm64`: `go-cqhttp_linux_arm64.tar.gz`;
+ - And more...
+
+如果你需要校验下载文件的完整性, 你可以获取 `go-cqhttp_checksums.txt`, 其包含了包括上述文件的哈希值.
+
+如果没有你所需要的架构/系统的相应版本, 或者希望自己构建, 可以参考[这里](https://docs.go-cqhttp.org/guide/quick_start.html#%E5%A6%82%E4%BD%95%E8%87%AA%E5%B7%B1%E6%9E%84%E5%BB%BA).
+
+若下载到的是压缩文件, 解压以获得需要的二进制可执行文件.
+
+将获取到的可执行文件放在一个单独的空文件夹内, 这里就简单取名为 `gocq`, 然后终端 `cd` 进去, 输入指令:
+
+```bash
+./go-cqhttp-executable-file
+```
+
+第一次运行, 程序会打印出以下内容:
+
+```log
+[WARNING]: 尝试加载配置文件 config.yml 失败: 文件不存在
+[INFO]: 默认配置文件已生成,请编辑 config.yml 后重启程序.
+```
+
+根据 [go-cqhttp howto](https://github.com/Mrs4s/go-cqhttp/blob/master/docs/config.md) 的说明,
+修改 `config.yml` 文件的内容.
+
+:::info
+
+对于 Avilla, 由于在设计上更倾向于 [OneBot v12](https://github.com/botuniverse/onebot/pull/108)(WIP),
+所以我们对 `go-cqhttp` 的配置内容也具有一定的要求:
+
+打开 `config.yml` 文件, 找到以下默认的配置内容:
+
+```yaml
+...
+
+message:
+  # 上报数据类型
+  # 可选: string,array
+  post-format: string
+
+...
+```
+
+将 `message.post-format` 的值从 `string` 改为 `array`,
+这里也有[相应的 OneBot Spec 条目](https://github.com/botuniverse/onebot/blob/master/v11/specs/message/array.md)可供参考.
+
+然后, 你还需要配置 `access-token`:
+
+```yaml
+# 默认中间件锚点
+default-middlewares: &default
+  # 访问密钥, 强烈推荐在公网的服务器设置
+  access-token: 'avilla-test' # 记住这个
+```
+
+配置正向 Websocket 方式通讯:
+
+```yaml
+# 连接服务列表
+servers:
+  # 添加方式，同一连接方式可添加多个，具体配置说明请查看文档
+  #- ws:   # 正向 Websocket
+  # 正向WS设置
+  - ws:
+      # 正向WS服务器监听地址, 请记住
+      host: 127.0.0.1
+      # 正向WS服务器监听端口, 请记住
+      port: 6700
+      middlewares:
+        <<: *default # 引用默认中间件
+```
+
+:::
+
+再次启动, 根据程序的提示完成相应操作, 直到有以下提示出现:
+
+```log
+[INFO]: 登录成功 欢迎使用: <Username>
+```
+
+我们就成功的配置完成了一个 `go-cqhttp` 实例.
+
+:::note
+在 Windows 中, 如果你试图直接通过双击可执行文件运行, 则 `go-cqhttp` 会警告这一行为:
+
+```log
+[WARNING]: 警告: 强烈不推荐通过双击直接运行本程序, 这将导致一些非预料的后果.
+[WARNING]: 将等待10s后启动
+```
+
+因为如果程序因为一些未预料到的原因导致异常退出, 你就获取不到其打印在控制台的错误数据,
+而这个错误极有可能无法稳定的复现, 非常难办...
+
+所以我们不建议你双击可执行文件, 执行不论是 `go-cqhttp` 还是其他的控制台程序,
+这会带来不必要的麻烦.
+:::
+
+如果需要更多关于 `go-cqhttp` 的文档, 你可以访问 [go-cqhttp 帮助中心](https://docs.go-cqhttp.org/) 获取更多相关内容.
+
+
+## Avilla 侧
+
+安装:
+
+```bash
+poetry add avilla-core avilla-onebot
+
+# or use pip
+
+pip install avilla-core avilla-onebot
+```
+
+在 `bot.py` 中填入以下内容:
+
+```python
+import asyncio
+import logging
+from aiohttp.client import ClientSession
+from graia.broadcast import Broadcast
+from yarl import URL
+from avilla.core import Avilla
+from avilla.core.event.message import MessageEvent
+from avilla.core.execution.message import MessageSend
+from avilla.core.message.chain import MessageChain
+from avilla.core.network.clients.aiohttp import AiohttpWebsocketClient
+from avilla.onebot.config import OnebotConfig, WebsocketCommunication
+from avilla.onebot.protocol import OnebotProtocol
+from avilla.core.relationship import Relationship
+from avilla.core.builtins.elements import Text
+
+loop = asyncio.get_event_loop()
+broadcast = Broadcast(loop=loop)
+session = ClientSession(loop=loop)
+avilla = Avilla(
+    broadcast,
+    OnebotProtocol,
+    {"ws": AiohttpWebsocketClient(session)},
+    {
+        OnebotProtocol: OnebotConfig(
+            access_token="avilla-test", # 填入你在配置 go-cqhttp 时用的那个
+            bot_id=123456789, # 你的机器人的 id.
+            communications={"ws": WebsocketCommunication(api_root=URL("ws://127.0.0.1:6700/"))}, # 配置为你在配置 go-cqhttp 时用的那个
+        )
+    },
+)
+
+logging.basicConfig(
+    format="[%(asctime)s][%(levelname)s]: %(message)s",
+    level=logging.INFO,
+)
+
+@broadcast.receiver(MessageEvent)
+async def event_receiver(rs: Relationship, message: MessageChain):
+    if message.as_display() == "测试BOT":
+        await rs.exec(MessageSend(MessageChain.create([
+            Text("Avilla 唤醒测试.")
+        ])))
+
+loop.run_until_complete(avilla.launch())
+loop.run_forever()
+```
+
+启动程序:
+
+```bash
+elaina@home /home/elaina/avilla-test (venv:py3.9-avilla-test) $ python bot.py
+/home/elaina/avilla-test/bot.py:17: DeprecationWarning: The object should be created within an async function
+  session = ClientSession(loop=loop)  # 正常现象, 忽略即可.
+[2021-08-31 10:37:12,207][INFO]: hello, world!
+[2021-08-31 10:37:12,208][INFO]: using platform: Tencent QQ/universal:OneBot@v11
+```
+
+向你的机器人账号发一个好友消息, 或者在机器人所加的群里发一条消息.
+
+> TODO: 其实这里应该要有个聊天界面的, 但我还没写, 并且我赶时间.
+
+恭喜, 你成功的运行起了一个最小实例, 现在就让我们正式开始此行.
+
+:::warning
+
+因为 Tencent QQ 的[风控问题](https://github.com/Mrs4s/go-cqhttp/issues/515)臭名昭著, 当你测试时,
+可能 `go-cqhttp` 的控制台会出现这样一条:
+
+```log
+[WARNING]: 群消息发送失败: 账号可能被风控.
+```
+
+当你看到这个消息时, 你的测试消息将得不到回应, 也就是说你可能看不到 `Avilla 唤醒测试.` 这样一条消息,
+这就是风控的基本可观测现象, 而风控在汇报的问题中还有例如无法正常使用群管理功能等问题,
+所以这是一个非常麻烦而又非常让人感到一阵恶心的问题.
+
+请注意, 这个**绝对**不是 Avilla 的问题, 而是 Tencent QQ 的平台管控措施, **请不要**汇报关于这个的错误.
+
+通常, 风控仅出现在你刚启动 `go-cqhttp` 的那一段时间, 如果你想解决这个问题,
+只需要将你的 `go-cqhttp` 程序放在后台, 等一会, 做一些其他的事情,
+之后再试, 风控就*有可能*解除, 这是其中一种不稳定的缓解办法.
+
+如果上游发生了更加严峻的问题, 导致这个方法失效, 请移步 `go-cqhttp` 处寻找解决方法.
+
+:::
+

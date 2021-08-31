@@ -2,6 +2,21 @@ module.exports = {
   docs: [
     {
       type: 'category',
+      label: "Avilla",
+      items: [
+        {
+          type: 'category',
+          label: "Tutorial",
+          items: [
+            'quick-start',
+            'message-send',
+            'msg-event-filter'
+          ].map(value => `avilla/tutorial/${value}`)
+        }
+      ]
+    },
+    {
+      type: 'category',
       label: "Broadcast Control",
       items: [
         {
