@@ -45,10 +45,10 @@ extra:
   social:
     - icon: fontawesome/brands/cloudflare
       link: https://graia.pages.dev/
-      name: CloudFlare
+      name: CloudFlare 镜像
     - icon: fontawesome/solid/book-open-reader
       link: https://graia.readthedocs.io/
-      name: ReadTheDocs
+      name: ReadTheDocs 镜像
     - icon: fontawesome/brands/qq
       link: https://jq.qq.com/?_wv=1027&k=VXp6plBD
       name: QQ 群
