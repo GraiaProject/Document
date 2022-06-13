@@ -1,8 +1,5 @@
----
-id: depend
-title: 依赖注入
-sidebar-title: 依赖注入(Depend)
----
+# 依赖注入 (Depend)
+
 
 你或许会遇到各种需要代码复用的情况, 像是获取 URL 中的路径参数, 然后验证它在数据库中存不存在: 如果存在, 给主体的逻辑部分以你查询到的数据, 否则返回 404.
 
@@ -47,11 +44,10 @@ async def group_members(group_id: str = GetParam('group_id')):
 
 我们假设当用户访问 `/group/members?group_id=qwertyuioop` 时, `group_id` 会被赋值为 `qwertyuioop`, 以此类推.
 
-:::tip
+!!! tip
 
-其实这个 `GetParam` 还真能实现...你可以用 Dispatcher 或者 Decorator 套一个比如说 starlette/aiohttp 实现.
+    其实这个 `GetParam` 还真能实现...你可以用 Dispatcher 或者 Decorator 套一个比如说 starlette/aiohttp 实现.
 
-:::
 
 我们声明以下 Depend 实现:
 

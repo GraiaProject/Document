@@ -36,10 +36,11 @@ broadcast = Broadcast(loop=loop)
 由于分发事件的方式是使用 `loop.create_task`, 所以 `Broadcast` 需要依附于一个正在运行的 `loop` 才能使用,
 通常你可以通过 `loop.run_until_complete` 或者 `loop.run_forever` 方法运行事件循环.
 
-:::tip
-针对 `Graia Application` 用户: 当你执行 `GraiaMiraiApplication.launch_blocking` 方法时,
-等同于上面的方式.
-:::
+!!! note
+
+    针对 `Graia Ariadne` 用户: 当你执行 `Ariadne.launch_blocking` 方法时,
+    等同于上面的方式.
+
 
 ## Create a Event
 

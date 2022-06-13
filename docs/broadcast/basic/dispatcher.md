@@ -1,8 +1,4 @@
----
-id: dispatcher
-title: 参数解析器
-sidebar-title: 参数解析器
----
+# 参数解析器
 
 # 问题引入
 
@@ -37,9 +33,7 @@ async def event_receiver(event: ExampleEvent, event_2: ExampleEvent):
 
 而当我们将参数部分修改为这样（其余修改部分省略）：
 
-:::important
-这段代码将会报错！
-:::
+!!! error "这段代码将会报错！"
 
 ```python
 async def event_receiver(event):

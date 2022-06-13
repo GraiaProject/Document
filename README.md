@@ -1,1 +1,14 @@
-我觉得这里总该写点什么东西，但既然这只是 GraiaProject/Document, 所以嘛。
+<div align="center">
+# Document
+
+`Graia Framework` 的新版文档, 由开发者名义释出.
+
+</div>
+
+## 部署
+
+```bash
+python -m venv ./.venv
+pip install -r requirements.ext
+mkdocs build
+```

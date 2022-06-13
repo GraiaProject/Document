@@ -1,0 +1,112 @@
+site_name: Graia 官方文档
+theme:
+  features:
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.expand
+    - navigation.top
+
+  name: material
+  language: zh
+  icon:
+    repo: fontawesome/brands/git-alt
+    logo: material/file-document-multiple-outline
+  favicon: img/favicon.png
+
+  font:
+    text: Noto Sans Simplified Chinese
+    code: JetBrains Mono
+
+  custom_dir: overrides
+
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      toggle:
+        icon: material/toggle-switch-off-outline
+        name: 黑暗模式
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      toggle:
+        icon: material/toggle-switch
+        name: 明亮模式
+
+extra_css:
+  - "assets/chat.css"
+  - "assets/extra.css"
+  - "assets/curtain.css"
+
+extra_javascript:
+  - "assets/admonition.js"
+
+copyright: Copyright &copy; Graia Project 2020-2022.
+
+extra:
+  social:
+    - icon: fontawesome/brands/cloudflare
+      link: https://graia.pages.dev/
+      name: CloudFlare
+    - icon: fontawesome/solid/book-open-reader
+      link: https://graia.readthedocs.io/
+      name: ReadTheDocs
+    - icon: fontawesome/brands/qq
+      link: https://jq.qq.com/?_wv=1027&k=VXp6plBD
+      name: QQ 群
+    - icon: material/compass
+      link: https://graiax.cn/
+      name: Graiax 社区
+    - icon: fontawesome/brands/github
+      link: https://github.com/GraiaProject
+      name: GitHub 组织
+
+markdown_extensions:
+  - attr_list
+  - md_in_html
+  - admonition
+  - footnotes
+  - meta
+  - pymdownx.caret
+  - pymdownx.tilde
+  - pymdownx.critic
+  - pymdownx.details
+  - pymdownx.inlinehilite
+  - pymdownx.highlight
+  - pymdownx.snippets
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.keys
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - codehilite:
+      guess_lang: true
+      linenums: true
+  - toc: # 锚点
+      permalink: 🔗
+  - pymdownx.arithmatex
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.magiclink:
+      repo_url_shorthand: true
+      social_url_shorthand: true
+      repo_url_shortener: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tabbed:
+      alternate_style: true
+
+plugins:
+  - search
+  - mkdocstrings:
+      handlers:
+        python:
+          import:
+            - https://docs.python.org/zh-cn/3/objects.inv
+            - https://graia.readthedocs.io/projects/ariadne/objects.inv
+
+  - literate-nav:
+      nav_file: NAV.md
+
+  - section-index

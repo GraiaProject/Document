@@ -1,9 +1,4 @@
----
-id: decorator
-title: 参数装饰器
-sidebar-title: 参数装饰器
-
----
+# 参数装饰器
 
 有时候，我们只希望对一个参数做一些调校，或者是灵活的对多个不同的参数进行特性的加成。这个时候，我不是很建议你使用 Dispatcher 实现这样的 —— 毕竟那样好像要三层还是四层的缩进，不太好啊。。。
 
@@ -37,9 +32,10 @@ async def target(self, interface: DecoratorInterface):
     ...
 ```
 
-:::tip
-这里也可以为 `staticmethod`。
-:::
+!!! tip
+
+    这里也可以为 `staticmethod`。
+
 
 这里，我们打算让这个装饰器将原本的返回值处理下 —— 如果类型为 `int` 就递增 `1`，我们这样写：
 
@@ -50,9 +46,10 @@ async def target(self, interface: DecoratorInterface):
     return interface.return_value
 ```
 
-:::important
-这里必须返回一个值，不然默认将返回 `None`。
-:::
+!!! important
+
+    这里必须返回一个值，不然默认将返回 `None`。
+
 
 然后我们在一个事件监听器里这样写，假设 `a_num` 原本会接受到整数 `2`：
 

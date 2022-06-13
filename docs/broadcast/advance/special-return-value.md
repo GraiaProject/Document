@@ -1,12 +1,9 @@
----
-id: special-return-value
-title: 特殊返回值
-sidebar-title: 特殊返回值
----
+# 特殊返回值
 
-:::tip
-本章中所有内容均可以在 `graia.broadcast.entities.signatures` 中找到.
-:::
+!!! tip
+
+    本章中所有内容均可以在 `graia.broadcast.entities.signatures` 中找到.
+
 
 ## `Force` - 原值直接传递
 
@@ -24,13 +21,13 @@ Force(Force("嗯?")) == Force("嗯?")
 
 ## `RemoveMe` - 尝试移除当前监听器
 
-:::warning
-`RemoveMe` 的满足需要符合以下条件:
+!!! warning
 
- - 需要 `Listener` 作为执行对象;
- - 需要当前 `Listener` 确实存在于当前 `Broadcast` 实例内.
+    `RemoveMe` 的满足需要符合以下条件:
 
-否则, 该返回将被忽略, 这方便了你在一些情景下的使用.
-:::
+    - 需要 `Listener` 作为执行对象;
+    - 需要当前 `Listener` 确实存在于当前 `Broadcast` 实例内.
+
+    否则, 该返回将被忽略, 这方便了你在一些情景下的使用.
 
 返回的必须为一个实例, 也就是说, `return RemoveMe` 是无效的.
