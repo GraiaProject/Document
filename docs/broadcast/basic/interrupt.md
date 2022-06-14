@@ -71,3 +71,6 @@ async def upload(session: Session = getCurrentSession()):
 你就简单的当个可以向上层返回结果的事件接受器, 这样理解也是没问题的.
 
 这个特性的应用相当广泛, 限制它可能性的也许只有想象力吧.
+
+!!! tip
+    在 Graia Ariadne 的文档中也有对于 `Interrupt` 这一特性的阐述, 另见[此处](../../ariadne/extra/broadcast/interrupt.md)

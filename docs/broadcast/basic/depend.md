@@ -76,3 +76,6 @@ async def group_members(group: Group = Depend(getGroup)):
 ```
 
 这样就可以直接获取到 `Group` 了, 而这就是 Depend 最简单的应用.
+
+!!! tip
+    在 Graia Ariadne 的文档中也有对于 `Depend` 这一特性的阐述, 另见[此处](../../ariadne/extra/broadcast/depend.md)

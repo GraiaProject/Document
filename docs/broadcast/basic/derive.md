@@ -43,6 +43,16 @@ async def parse(chain: Annotated[MessageChain, derive_chain]):
     ...
 ```
 
-你会注意到 `Derive` 的局限在于它不应用于改变返回值的类型, 比如从 MessageChain 变为 dict 之类的.
+你会注意到 `Derive` 的局限在于它通常情况下不改变返回值的类型, 比如从 MessageChain 变为 dict 之类的.
+当你要这么做的时候, 你得用 `OriginType` 显式声明:
 
-因此, 它是一个和 `Decorator` 同级的特性.
+```py
+from graia.broadcast.builtins.derive import OriginType
+
+async def test(sth: Annotated[int, OriginType(MessageChain), DeriveChain, balabala, ...]):
+    ...
+```
+
+!!! note
+    Derive 是一个与 Decorator 同级的特性, 但二者不一定能相互替代.  
+    做出你最好的选择.

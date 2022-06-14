@@ -3,6 +3,7 @@
 - [参数解析器](./dispatcher.md)
 - [参数解析器的生命周期](./dispatcher-lifecycle.md)
 - [参数装饰器](./decorator.md)
+- [派生修饰](./derive.md)
 - [依赖注入](./depend.md)
 - [中断](./interrupt.md)
 - [命名空间](./namespace.md)
