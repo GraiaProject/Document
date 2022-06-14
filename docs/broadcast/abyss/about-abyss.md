@@ -9,5 +9,4 @@ sidebar-title: 关于深渊(Abyss)
 
  - 解析器注入(Dispatcher Inject)
  - 活用执行器(Executor)
- - 元事件(Universal Event/Meta Event)
  - ...
