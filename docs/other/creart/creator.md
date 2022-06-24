@@ -13,12 +13,16 @@
     需要注意的是, `Creator` 的声明在编写的时候 **绝对不应该** 实际引用创建目标.  
     这会完美的破坏用户的使用体验.
 
+
+## 编写
+
 通常的, 如果对不同的创建目标, 可用性检查的行为是一致的, 我们会把他们全部在一个 `Creator` 里面实现.
 
 以下是 `example.example1:ExampleClass` 的 Creator 实现:
 
 ```py
 from __future__ import annotation  # 优化类型标注的编写体验
+from creart import exists_module
 from creart.creator import AbstractCreator, CreateTargetInfo
 
 from typing import TYPE_CHECKING
@@ -48,12 +52,10 @@ class ExampleClassCreator(AbstractCreator):
     ## 你应该在这里检查 create 方法中所引用到的模块的可用状态, 如下所示.
     @staticmethod
     def available() -> bool:
-        try:
-            import example.example1
-
-            return True
-        except ImportError:  # 请勿 wildmatch, 因为目标模块可能存在错误, 这会导致错误无法展示出来.
-            return False
+        ## 当你要判断一个包或是一个模块是否存在时, 应该使用 exists_module 函数,
+        ## try import 会直接进行导入并拖慢启动速度, 尤其是当你不使用一些模块的时候.
+        ## 如果需要复用其他 Creator 的可用性判断, 请使用 Mixin, 详见 <#mixin>.
+        return exists_module("example.example1")
     
     ## create, 创建器, 需要为静态方法.
     ## 注意, 这里接收到的是原始对象而不是 CreateTargetInfo 中的字符串.
@@ -64,6 +66,10 @@ class ExampleClassCreator(AbstractCreator):
         return create_type(...)
 ```
 
+## 启用
+
+### 动态启用
+
 使用 `creart.add_creator` 函数将该 Creator 启用:
 
 ```py
@@ -71,6 +77,8 @@ from creart import add_creator
 
 add_creator(ExampleClassCreator)
 ```
+
+### 使用 Entry Point
 
 如果我们想像各式 `stub package` 那样, 通过发布一个 PyPI 包为其他的模块提供 `creart` 支持,
 需要在 `pyproject.toml` 或是 `setup.py` 中按照各式包管理器/打包器的格式声明 [`Entry Point`](https://docs.python.org/zh-cn/3.12/library/importlib.metadata.html#entry-points).
@@ -109,3 +117,29 @@ Creart 会自动进行 **所有** 被 Entry Point 指向的 Creator 并进行可
 !!! note
     `Graia Project` 中的所有 `Creart` 支持由 <https://github.com/GraiaProject/creart-graia> 提供,
     或许是个不错的示范.
+
+## Mixin - 混入
+
+我们可以使用 `mixin` 函数在一个 Creator 实现中复用其他 Creator 的可用性判断.
+
+```py
+from creart import mixin
+from creart.creator import AbstractCreator, CreateTargetInfo
+
+## 你可以直接在类上使用该装饰器, 也可以单独在 `available` 上使用.
+## 我们通常推荐在 `available` 上单独使用, 以避免往后迭代版本改变了 mixin 行为造成了向后不兼容的问题.
+
+# @mixin(creator1, creator2, ...)
+class CreatorN(AbstactCreator):
+    targets = ...
+
+    @staticmethod
+    @mixin(creator1, creator2, ...)
+    ## 此处会先调用 CreatorN 的, 然后再依次调用 1, 2, 以此类推.
+    def available():
+        ...
+    
+    def create(create_type):
+        ...
+
+```
