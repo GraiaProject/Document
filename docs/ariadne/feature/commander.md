@@ -45,6 +45,8 @@ cmd = Commander(broadcast)
 
 其 `command` 参数为一个字符串, 为类似 `shell` 的主命令样式.
 
+其 `priority` 参数为一个 `int`, 越低则优先度越高.
+
 其抽象文法表示如下:
 
 ```ABNF
@@ -99,28 +101,6 @@ COMMAND ::= <SEGMENT> (" " SEGMENT)*
 async def func(param: str): ...
 ```
 
-### 参数分派与标注
-
-使用 **参数定义** 的拓展语法, 可以指定参数的类型与默认值, 并且让其不需要 [参数重定向](./#slot) 就可以直接被分派.
-
-这种语法与 Python 中的标注语法相同. 例如: `#!py {content: str = "default"}`
-
-它可以为 `#!py def (content: str) -> ...` 进行参数分派.
-
-前导的 `...` 声明启用了 `wildcard`, 接受任意个尾接消息链, 在这个情况下可以进一步启用 `raw`.
-
-#### 关于 wildcard
-
-`wildcard` 模式可以类比 `#!py def func(*args: anno)` 中的 `*args`.
-
-这种情况下接受任意个参数, 并通过 `{...param: anno}` 中的 `anno` 逐个处理.
-
-最后分派的将是 `Tuple[anno]` 类型参数.
-
-显而易见的, `default` 在 `wildcard` 下不可被设置.
-
-通过 `#!py {...content: raw}` 这种特殊格式可以启用 [`raw`](./#raw) 解析模式.
-
 #### 参数的自动解析
 
 `Commander` 内部用了某些魔法自动解析参数并转换为对应的 Python 对象.
@@ -150,6 +130,11 @@ class ExampleModel(BaseModel):
     def func(content: ExampleModel = ExampleModel(...)): ...
     ```
 
+    ```py
+    @cmd.command(".command {content: ExampleModel}")
+    def func(content = ExampleModel()): ...
+    ```
+
     本机制并不会与 `Decorator` 解析冲突.
 
 
@@ -161,14 +146,46 @@ class ExampleModel(BaseModel):
 
 函数声明 < 命令的拓展语法 < Slot 定义
 
+### 参数分派与标注
+
+使用 **参数定义** 的拓展语法, 可以指定参数的类型与默认值, 并且让其不需要 [参数重定向](./#slot) 就可以直接被分派.
+
+这种语法与 Python 中的标注语法相同. 例如: `#!py {content: str = "default"}`
+
+它可以为 `#!py def (content: str) -> ...` 进行参数分派.
+
+前导的 `...` 声明启用了 `wildcard`, 接受任意个尾接消息链, 在这个情况下可以进一步启用 `raw`.
+
+#### 关于 wildcard
+
+`wildcard` 模式可以类比 `#!py def func(*args: anno)` 中的 `*args`.
+
+这种情况下接受任意个参数, 并通过 `{...param: anno}` 中的 `anno` 逐个处理.
+
+最后分派的将是 `Tuple[anno]` 类型参数.
+
+显而易见的, `default` 在 `wildcard` 下不可被设置.
+
+通过 `#!py {...content: raw}` 这种特殊格式可以启用 `raw` 解析模式.
+
+`raw` 模式下, 末尾 `wildcard` 的消息链元组会被转化为原来的单个消息链.
+
+例如：
+
+```py
+@cmd.command(".record start {title: str} {...targets: At}")
+def parser(title, targets): ... # title: str, targets: Tuple[At, ...]
+
+@cmd.command(".record append {title: str} {...chain: raw}")
+def parser(title, chain): ... # title: str, chain: MessageChain
+```
+
 #### 最后一个参数: 可选项与 `raw` 属性
 
 在 `Slot` 上指定 `default` / `default_factory` 即默认认为是可选项, 且要求其对应的参数在最后.
 
-指定 `Slot` 的 `type` 为字面值 `#!py "raw"` <span class="curtain">或者 commander._raw</span> 时,
-会认为 `Slot` 为 `raw`.
-
-`raw` 模式下, 末尾 `wildcard` 的消息链元组会被转化为原来的单个消息链.
+指定 `Slot` 的 `type` 为字面值 `#!py "raw"` 时,
+会认为 `Slot` 为 `raw` 模式.
 
 ### 动态选项: `Arg`
 
@@ -214,6 +231,12 @@ Arg("--option {value}", type=str, default="")
 Arg("--option {value}", default=MessageChain(["default"])) # 默认 type 为 MessageChain
 ```
 
+!!! warning "`Arg` 的匹配只能在末尾启用."
+
+```py title="Arg 用法演示"
+@cmd.command(".record {...el: raw}", {"help": Arg("--help", default=False)})
+def parse_help(help: bool): ...
+```
 
 ### `add_type_cast`: 添加可处理的类型
 
