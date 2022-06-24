@@ -3,6 +3,8 @@
 `Creart` 是一款通用, 易于扩展, 实现简洁的类实例化器,
 致力于简化 `Graia Project` 中各个部件在单一应用实例中的创建及引用.
 
+PyPI Project: `creart`; `creart-graia`(support for graia)
+
 ## 速览
 
 你可以简单的在入口文件中声明使用到的前置部件, 这些部件会通过 `creart` 于其间自动传递:
