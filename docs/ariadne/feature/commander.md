@@ -156,6 +156,22 @@ class ExampleModel(BaseModel):
 
 前导的 `...` 声明启用了 `wildcard`, 接受任意个尾接消息链, 在这个情况下可以进一步启用 `raw`.
 
+### 可选参数
+
+在 `Slot` 上指定 `default` / `default_factory`，或者通过 `{arg = default_value}` 指定默认值即认为是可选项.
+
+可选项后不能再跟随 **非** 可选的文本与参数，但是 `wildcard` 是可以的。
+
+!!! example
+
+    这个在可选参数后跟随了其他东西.
+
+    !!! error "`.command {arg: anno = default} {foo} bar`"
+
+    这个则是允许的.
+
+    !!! check "`.command {foo} bar {arg: anno = default} {spam = default}`"
+
 #### 关于 wildcard
 
 `wildcard` 模式可以类比 `#!py def func(*args: anno)` 中的 `*args`.
@@ -166,7 +182,7 @@ class ExampleModel(BaseModel):
 
 显而易见的, `default` 在 `wildcard` 下不可被设置.
 
-通过 `#!py {...content: raw}` 这种特殊格式可以启用 `raw` 解析模式.
+通过 `#!py {...content: raw}` 这种特殊格式，或者指定 `Slot` 的 `type` 为字面值 `#!py "raw"` 可以启用 `raw` 解析模式.
 
 `raw` 模式下, 末尾 `wildcard` 的消息链元组会被转化为原来的单个消息链.
 
@@ -179,13 +195,6 @@ def parser(title, targets): ... # title: str, targets: Tuple[At, ...]
 @cmd.command(".record append {title: str} {...chain: raw}")
 def parser(title, chain): ... # title: str, chain: MessageChain
 ```
-
-#### 最后一个参数: 可选项与 `raw` 属性
-
-在 `Slot` 上指定 `default` / `default_factory` 即默认认为是可选项, 且要求其对应的参数在最后.
-
-指定 `Slot` 的 `type` 为字面值 `#!py "raw"` 时,
-会认为 `Slot` 为 `raw` 模式.
 
 ### 动态选项: `Arg`
 
