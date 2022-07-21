@@ -14,7 +14,7 @@ namespace = broadcast.createNamespace("example_namespace")
 
 我们可以为这个命名空间设置各种东西, 包括优先级, 是否隐藏, 是否禁用, 还有命名空间级作用的 `Dispatcher`.
 
-使用 `removeNamespace` 即可删除命名空间, 但相对的, 在这个命名空间下的事件监听器将**全部**被移除.
+使用 `removeNamespace` 即可删除命名空间, 但相对的, 在这个命名空间下的事件监听器将 **全部** 被移除.
 
 使用 `containNamespace` 查询是否有该命名空间.
 

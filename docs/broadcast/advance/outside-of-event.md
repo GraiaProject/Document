@@ -11,5 +11,5 @@ sidebar-title: 事件之外的用户空间
  - `Broadcast.Executor` 的 `dispatchers` 参数;
  - `ExecTarget`(及其子类, eg. `Listener`) 的属性 `inline_dispatchers` 与 `decorators`;
  - `Broadcast` 实例的 `default_namespace` 是应用于所有未特别指定命名空间的事件监听器的命名空间, 也具有 `injected_dispatchers` 属性;
- - `Broadcast.{prelude_dispatchers, finale_dispatchers}` 可以放一些 `Dispatcher`, 这里是**全局应用**的.
+ - `Broadcast.{prelude_dispatchers, finale_dispatchers}` 可以放一些 `Dispatcher`, 这里是 **全局应用** 的.
  - And more...

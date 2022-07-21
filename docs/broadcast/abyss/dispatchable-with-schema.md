@@ -4,7 +4,7 @@ title: 使用模型(Model)
 sidebar-title: 使用模型(Model)
 ---
 
-从原理上来说, `Dispatchable` 可以描述**任何**包含一 `Dispatcher` 类属性的类声明,
+从原理上来说, `Dispatchable` 可以描述 **任何** 包含一 `Dispatcher` 类属性的类声明,
 这意味着我们能配合 `pydantic`, `dataclass` 之类的方便事件实例的构建.
 
 在实际实现中, 我们只需要简单的继承 `Dispatchable`,

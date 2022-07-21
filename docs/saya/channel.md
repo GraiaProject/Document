@@ -36,7 +36,7 @@ channel.description("Example Plugin for Saya")
 ## ScopedContext
 
 !!! warn
-    该特性尚处于 `experiment`(实验性) & `work-in-process`(半成品) 阶段, 请**不要**在实际开发中使用.  
+    该特性尚处于 `experiment`(实验性) & `work-in-process`(半成品) 阶段, 请 **不要** 在实际开发中使用.  
 
 `ScopedContext` 旨在改善模块内运行时数据的共享与存储.
 

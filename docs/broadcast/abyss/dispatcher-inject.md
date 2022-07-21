@@ -11,7 +11,7 @@ sidebar-title: 参数解析器注入
 
 `Broadcast.prelude_dispatchers` 先于其他 **所有** Dispatchers 被调用.  
 `Decorator` 与 `Derive` 的底层支持都在实例化时已经被安放到这个列表中了,
-除非必要, 否则**无论如何**都不要修改他们的次序!
+除非必要, 否则 **无论如何** 都不要修改他们的次序!
 
 ## Finale Dispatcher
 
@@ -20,4 +20,4 @@ sidebar-title: 参数解析器注入
 
 `BroadcastBuiltinDispatcher` 在实例化时被预先注入到此列表中,
 该 Dispatcher 用于分发像 `Broadcast` 这样的重要实例,
-除非必要, 否则**无论如何**都不要删除!
+除非必要, 否则 **无论如何** 都不要删除!

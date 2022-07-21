@@ -19,7 +19,7 @@ class ExampleBehaviour(Behaviour):
 ```
 
 Saya 的 Behaviour 在分配职权上采用沿袭自 Broadcast Control 中 Dispatcher Interface 的简化,
-当某个 Behaviour 返回一个非 `None` 值之前, Saya 会面向**所有**的 Behaviour 进行一次尝试;
+当某个 Behaviour 返回一个非 `None` 值之前, Saya 会面向 **所有** 的 Behaviour 进行一次尝试;
 若所有的尝试都以失败告终, 表示对于当前 Cube 的特定操作失败, Saya 会抛出 `RequirementCrashed` 错误.
 
 > 对, 就是 Broadcast Control 那个.
