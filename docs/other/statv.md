@@ -56,7 +56,7 @@ asyncio.run(main())
 @staticmethod
 @stats.validator
 def _(stats: Stats, past: ..., current: ...):
-    ... # some validate
+    ... # some validation
     return current
 ```
 

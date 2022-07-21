@@ -5,3 +5,4 @@
 - [特殊返回值](./special-return-value.md)
 - [事件之外的用户空间](./outside-of-event.md)
 - [无头装饰器](./headless-decorator.md)
+- [参数编译](./param_compile.md)

@@ -12,9 +12,9 @@
 
 ## 简介
 
-[`Ariadne`](https://github.com/GraiaProject/Ariadne) 是 [`BlueGlassBlock`](https://github.com/BlueGlassBlock) 基于
-[`Graia Project`](https://github.com/GraiaProject/) 系列依赖库而编写的
-**简明, 优雅** 的 聊天软件自动化框架. 其丰富而简洁的接口相信可以使开发者能更好的完成业务逻辑.
+[`Ariadne`](https://github.com/GraiaProject/Ariadne) 是 [`Graia Project`](https://github.com/GraiaProject/)
+基于 [`mirai-api-http`](https://github.com/project-mirai/mirai-api-http) 构建的一个
+**简明, 优雅** 的聊天软件自动化框架. 其丰富而简洁的接口相信可以使开发者能更好的完成业务逻辑.
 
 **如果认为本项目有帮助, 欢迎点一个 `Star`.**
 

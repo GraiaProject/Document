@@ -3,7 +3,6 @@
     - [使用 Channel](./saya/channel.md)
     - [跨模块](./saya/cross-module.md)
 - Broadcast
-    - [派生修饰 - Derive](./broadcast/derive.md)
     - [Depend](./broadcast/depend.md)
     - [中断 - Interrupt](./broadcast/interrupt.md)
 - [计划任务](./scheduler.md)

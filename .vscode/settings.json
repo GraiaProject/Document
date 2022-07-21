@@ -5,6 +5,7 @@
         "codehilite",
         "fontawesome",
         "inlinehilite",
+        "kayaku",
         "linenums",
         "mkdocstrings",
         "pymdownx",

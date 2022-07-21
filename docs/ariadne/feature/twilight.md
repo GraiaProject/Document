@@ -178,7 +178,7 @@ async def reply(..., arg: RegexResult):
 
 `0.7.0` 以后, `Twilight` 支持使用 `preprocessor` 关键字参数进行预修饰.
 
-`preprocessor` 内应放置 [基础消息链处理器](./base-parser.md) 或者使用了 [`Derive`](./../extra/broadcast/derive.md) 特性的 [`Annotated`][typing.Annotated] 对象.
+`preprocessor` 内应放置 [基础消息链处理器](./base-parser.md) 或者使用了 [`Derive`](./../../broadcast/basic/derive.md) 特性的 [`Annotated`][typing.Annotated] 对象.
 
 例如:
 
@@ -214,7 +214,7 @@ async def reply(..., arg: MessageChain = ResultValue()): # 保证不会被正常
 
 !!! example "提示"
 
-    `ResultValue` 已经支持 [`Derive`](./../extra/broadcast/derive.md) , 但是只能用于 result 本来就能分发的类型.
+    `ResultValue` 已经支持 [`Derive`](./../../broadcast/basic/derive.md) , 但是只能用于 result 本来就能分发的类型.
 
     比如: `arg: Annotated[MessageChain, ResultValue()]`
 
