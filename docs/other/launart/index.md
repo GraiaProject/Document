@@ -28,21 +28,21 @@
 这种情况下你可以直接通过 `app.launch_manager` 获取实例.
 
 ```py
-art = app.launch_manager
+mgr = app.launch_manager
 ```
 
 如果没有，那你直接实例化一个即可.
 
 ```py
 from launart import Launart
-art = Launart()
+mgr = Launart()
 ```
 
 !!! tip "针对 Ariadne 用户"
 
     请在 **实例化 Ariadne** 后再使用 `Ariadne.launch_manager` 访问全局 `Launart` 实例。
 
-    或者你可以用 `Ariadne.config(launch_manager=art)` 来预先传入.
+    或者你可以用 `Ariadne.config(launch_manager=mgr)` 来预先传入.
 
 ## “可启动” 部件 - Launchable
 
@@ -54,29 +54,47 @@ art = Launart()
 
 ### 生命周期的表现 - stage
 
-首先你需要将 `stages` 声明为一个 [`property`][builtins.property]
+首先你需要将 `stages` 声明为一个 [`property`][property]
 （[`ClassVar`][typing.ClassVar] 也不是不行... 就是静态检查器会找你麻烦罢了）
 
 `stages` 里要放你所 **需要** 使用到的阶段：`preparing` `blocking` `cleanup`，分别对应准备，“阻塞” 和清理阶段。
 
 实际上生命周期所有的 “状态” 长这样：
 
+!!! example "图表阅读说明"
+
+    所有使用 <code style="color:#c973d9">#c973d9</code> 标记的部分（包括节点之间的边）即是你 “拥有代码控制权” 的部分。
+    
+    剩下的部分是由 `stage` 自动处理的。
+
 ```mermaid
 flowchart TB
+    classDef Control color:#c973d9;
+    Launch(launch)
+    PrePrep(waiting-for-prepare)
+    Prep(preparing)
+    PostPerp(prepared)
+    PreBlock(wait-for-blocking)
+    Block(blocking)
+    PostBlock(blocking-completed)
+    PreCleanup(waiting-for-cleanup)
+    Cleanup(cleanup)
+    Finished(finished)
     subgraph prepare
-    A(waiting-for-prepare) --> B(preparing)
-    B --> C(prepared)
+    PrePrep --> Prep:::Control --> PostPerp
     end
     subgraph blocking
-    M[wait-for-blocking] --> D(blocking)
-    D --> E(blocking-completed)
+    PreBlock --> Block:::Control --> PostBlock
     end
     subgraph cleanup
-    F(waiting-for-cleanup)
-    F --> G(cleanup)
-    G --> H(finished)
+    PreCleanup --> Cleanup:::Control
     end
-    prepare --> blocking --> cleanup
+    Launch --> prepare --> blocking --> cleanup --> Finished
+
+    linkStyle 5 stroke:#c973d9,stroke-width:4px;
+    linkStyle 6 stroke:#c973d9,stroke-width:4px;
+    linkStyle 7 stroke:#c973d9,stroke-width:4px;
+    linkStyle 8 stroke:#c973d9,stroke-width:4px;
 ```
 
 
@@ -85,7 +103,33 @@ flowchart TB
     ```py
     from launart import Launchable
 
-    class 
+    class Worker(Launchable):
+        def __init__(self, site: str , interval: float = 0.5):
+            self.site = site
+            self.interval = interval
+            super().__init__()
+
+        @property
+        def stages(self):
+            return {"prepare", "blocking", "cleanup"}
+
+        async def launch(self, mgr: Launart):
+            print("before prepare")
+
+            with self.stage("preparing"):
+                print("State: preparing")
+
+            print("after preparing")
+
+            with self.stage("blocking"):
+                print("Start blocking!")
+
+            print("after blocking")
+
+            with self.stage("cleanup"):
+                print("State: cleanup")
+            
+            print("before finish")
     ```
 
 
