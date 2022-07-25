@@ -1,4 +1,5 @@
 - [主页](./index.md)
+- [生态](./ecosystem.md)
 - [Ariadne](./ariadne/)
 - [Avilla](./avilla/)
 - [Broadcast](./broadcast/)

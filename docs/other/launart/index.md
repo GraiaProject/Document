@@ -98,40 +98,70 @@ flowchart TB
 ```
 
 
-!!! example "一个示例 Launchable"
+???+ example "生命周期示例"
 
     ```py
-    from launart import Launchable
+    from launart import Launart, Launchable
+
 
     class Worker(Launchable):
-        def __init__(self, site: str , interval: float = 0.5):
-            self.site = site
-            self.interval = interval
-            super().__init__()
+        id = "worker"
 
         @property
         def stages(self):
-            return {"prepare", "blocking", "cleanup"}
+            return {"preparing", "blocking", "cleanup"}
+
+        @property
+        def required(self):
+            return set()
 
         async def launch(self, mgr: Launart):
             print("before prepare")
 
-            with self.stage("preparing"):
+            async with self.stage("preparing"):
                 print("State: preparing")
 
             print("after preparing")
 
-            with self.stage("blocking"):
+            async with self.stage("blocking"):
                 print("Start blocking!")
 
             print("after blocking")
 
-            with self.stage("cleanup"):
+            async with self.stage("cleanup"):
                 print("State: cleanup")
-            
+
             print("before finish")
+
+
+    mgr = Launart()
+    mgr.add_launchable(Worker())
+    mgr.launch_blocking()
     ```
 
+???+ note "输出（启用 richuru）"
 
+    ```text
+    INFO     Starting launart main task...
+    INFO     Launching 1 components as async task...
+    before prepare
+    State: preparing
+    after preparing
+    SUCCESS  Layer #1:[worker] preparation completed.
+    INFO     All components prepared, start blocking phase.
+    Start blocking!
+    after blocking
+    INFO     Entering cleanup phase.
+    State: cleanup
+    before finish
+    SUCCESS  component worker finished.
+    INFO     [worker] completed.
+    SUCCESS  Layer #1:[worker] cleanup completed.
+    INFO     Cleanup completed, waiting for finalization.
+    SUCCESS  All launch task finished.
+    SUCCESS  Asyncio shutdown complete.
+    ```
+
+### 依赖解析
 
 接下来，让我们介绍真正能够实现代码复用的部分 —— [Service 和 ExportInterface](./service.md)
