@@ -5,6 +5,7 @@ theme:
     - navigation.tabs.sticky
     - navigation.expand
     - navigation.top
+    - content.code.annotate
 
   name: material
   language: zh

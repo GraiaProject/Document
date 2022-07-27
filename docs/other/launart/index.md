@@ -164,4 +164,116 @@ flowchart TB
 
 ### 依赖解析
 
+既然是 “生命周期” 管理，那肯定要管理每个部件之间的关系。
+
+你注意到了上个部分中 `required` 属性填的是一个空的 [`set`][set] 吗？
+
+它就是用来声明部件之间的依赖的。
+
+只要往 `required` 中填入对应的 `Launchable.id` 即可。
+
+假设我们有几个 `Launchable`，分别叫做 `pre` `bg` 和 `main`，`!#py main.required = {"pre", "bg"}`
+
+那么启动流程大致是这样的：
+
+```mermaid
+stateDiagram-v2
+    [*] --> Prepare
+    Prepare --> Blocking
+    Blocking --> Cleanup
+    Cleanup --> [*]
+
+    state Prepare {
+        state join <<join>>
+        pre.prepare --> join
+        bg.prepare --> join
+        join --> main.prepare
+    }
+    state Blocking {
+        pre.blocking
+        bg.blocking
+        main.blocking
+    }
+
+    state Cleanup {
+        state fork <<fork>>
+        main.cleanup --> fork
+        fork --> pre.cleanup
+        fork --> bg.cleanup
+    }
+```
+
+可以看出， **准备** 部分是按照依赖顺序 **依层** 进行，**阻塞** 部分是同步进行，而 **清理** 部分是倒序 **依层** 进行的。
+
+这可以确保你的 `Launchable` 在运行时不会因为某个部件没有启动而导致错误的结果。
+
+### 处理退出信号
+
+`Launart` 在准备退出（你按下 `Ctrl-C` 时）时并不会强制通过引发 [`CancelledError`][asyncio.CancelledError] 之类的异常来停止任务，
+但是你的 `Launart` 实例会通过 `mgr.status.exiting` 和 `mgr.status.stage` 来标识全局状态。
+
+当然，这仅限于需要在 `blocking` 阶段用 `while True` 之类轮询的 `Launchable`。
+
+无论如何，下面有对应的示例。
+
+=== "`blocking` 阶段轮询"
+
+    ```py
+    class RepeatQueryWorker(Launchable):
+        id = "worker.query.repeat"
+
+        @property
+        def stages(self):
+            return {"blocking"}
+
+        @property
+        def required(self):
+            return set()
+
+        async def launch(self, mgr: Launart):
+            exit_mark = asyncio.create_task(mgr.status.wait_for_sigexit())
+            while not exit_mark.done():
+                print("Doing my awesome queries...")
+                # YOUR CODE GOES HERE
+
+                await asyncio.wait(
+                    [asyncio.create_task(asyncio.sleep(3)), exit_mark],
+                    return_when=asyncio.FIRST_COMPLETED, # (1)
+                )
+    ```
+
+    1.  使得不管是 `sleep` 完 3 秒还是准备退出都可以立刻接收.
+
+=== "使用单独 task 来轮询"
+
+    ```py
+    class TaskQueryWorker(Launchable):
+        id = "worker.query.task"
+
+        @property
+        def stages(self):
+            return {"blocking", "cleanup"}
+
+        @property
+        def required(self):
+            return set()
+
+        async def query_loop(self, mgr: Launart):
+            while True:
+                print("Doing my awesome queries...")
+                # YOUR CODE GOES HERE
+                await asyncio.sleep(3)
+
+        async def launch(self, mgr: Launart):
+            async with self.stage("blocking"):
+                query_tsk = asyncio.create_task(self.query_loop(mgr))
+                await mgr.status.wait_for_sigexit()
+            async with self.stage("cleanup"):
+                query_tsk.cancel()
+                with contextlib.suppress(asyncio.CancelledError): # (1)
+                    await query_tsk
+    ```
+
+    1.  这个是必要的, 否则这个 [`CancelledError`][asyncio.CancelledError] 会把 `launch` 函数崩掉.
+
 接下来，让我们介绍真正能够实现代码复用的部分 —— [Service 和 ExportInterface](./service.md)
