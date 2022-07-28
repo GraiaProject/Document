@@ -172,7 +172,7 @@ flowchart TB
 
 只要往 `required` 中填入对应的 `Launchable.id` 即可。
 
-假设我们有几个 `Launchable`，分别叫做 `pre` `bg` 和 `main`，`!#py main.required = {"pre", "bg"}`
+假设我们有几个 `Launchable`，分别叫做 `pre` `bg` 和 `main`，`#!py main.required = {"pre", "bg"}`
 
 那么启动流程大致是这样的：
 
