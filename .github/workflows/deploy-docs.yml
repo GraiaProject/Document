@@ -23,6 +23,8 @@ jobs:
       - name: Build with MKDocs
         run: |
           mkdocs build
+        env:
+          GOOGLE_ANALYTICS_KEY: ${{ secrets.GOOGLE_ANALYTICS_KEY }}
 
       - name: Deploy to Cloudflare Pages
         uses: cloudflare/pages-action@1
