@@ -112,7 +112,9 @@ plugins:
           import:
             - https://docs.python.org/zh-cn/3/objects.inv
             - https://graia.readthedocs.io/projects/ariadne/objects.inv
-
+  - gen-files:
+      scripts:
+        - ./docs/write_verification.py
   - literate-nav:
       nav_file: NAV.md
 
