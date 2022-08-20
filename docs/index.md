@@ -28,36 +28,54 @@ Graia Project 目前的主要工作是为 Bot Development 提供一系列高效,
 部分存于官方人员的个人 GitHub 账号下的项目, 若有一定关联亦会出现.
 
 * Framework
-  * [Ariadne](https://github.com/GraiaProject/Ariadne)
-    一个优雅且完备的 Python QQ 自动化框架, 基于 Mirai API HTTP v2.
-  * [Avilla](https://github.com/GraiaProject/Avilla)
-    "下一代" 框架实现, 一个理论上可以实现零成本切换对接平台的框架.
+
+    - [Ariadne](https://github.com/GraiaProject/Ariadne)
+      一个优雅且完备的 Python QQ 自动化框架, 基于 Mirai API HTTP v2.
+    - [Avilla](https://github.com/GraiaProject/Avilla)
+      "下一代" 框架实现, 一个理论上可以实现零成本切换对接平台的框架.
+  
 * Framework Tools
-  * [Broadcast Control](https://github.com/GraiaProject/BroadcastControl)
-    极具扩展性的, 并不止于事件系统的事件系统实现.
-  * [Saya](https://github.com/GraiaProject/Saya)
-    社区中通用的插件/模块管理器.
-  * [Scheduler](https://github.com/GraiaProject/Scheduler)
-    一个简单的定时任务实现, 与 Broadcast Control 深度结合.
+
+    - [Broadcast Control](https://github.com/GraiaProject/BroadcastControl)
+      极具扩展性的, 并不止于事件系统的事件系统实现.
+    - [Saya](https://github.com/GraiaProject/Saya)
+      社区中通用的插件/模块管理器.
+    - [Scheduler](https://github.com/GraiaProject/Scheduler)
+      一个简单的定时任务实现, 与 Broadcast Control 深度结合.
+
 * Infrastructure
-  * [Amnesia](https://github.com/GraiaProject/Amnesia)  
-    一系列共用组件的集合.
-  * [creart](https://github.com/GraiaProject/creart) & [creart-graia](https://github.com/GraiaProject/creart-graia)
-    通用, 易于扩展, 实现简洁的类实例化器, 致力于简化 Graia Project 中各个部件在单一应用实例中的创建及引用.
-  * [launart](https://github.com/GraiaProject/launart)  
-    统一的应用实例启动时部件管理.
-  * [statv](https://github.com/GraiaProject/statv)
-    `Status API` 的实际实现.
-  * [GreyElaina/richuru](https://github.com/GreyElaina/richuru)  
-    一个轻量级的依赖, 为 [`loguru`](https://github.com/Delgan/loguru) 提供 [`rich`](https://github.com/willmcgugan/rich) 强大的终端渲染支持.
-  * [GreyElaina/Mina](https://github.com/GreyElaina/Mina)  
-    基于 `pdm-pep517` 实现的 Monorepo for Python 实现.
-  * **WIP** [kayaku](https://github.com/GraiaProject/kayaku)  
-    强大的配置管理解决方案.
-  * **Planned** [Luma](https://github.com/GraiaProject/Luma)
-    基于 `kayaku` 与 `creart` 等组件, 实现无入口文件的应用实例启动, 为之诞生的 CLI 工具.  
-    亦提供基于现有设施的 Saya 模块的管理, 目前 `pdm` 与 `poetry` 的支持已列入 Roadmap.
+
+    - [Amnesia](https://github.com/GraiaProject/Amnesia)  
+      一系列共用组件的集合.
+    - [creart](https://github.com/GraiaProject/creart) & [creart-graia](https://github.com/GraiaProject/creart-graia)
+      通用, 易于扩展, 实现简洁的类实例化器, 致力于简化 Graia Project 中各个部件在单一应用实例中的创建及引用.
+    - [launart](https://github.com/GraiaProject/launart)  
+      统一的应用实例启动时部件管理.
+    - [statv](https://github.com/GraiaProject/statv)
+      `Status API` 的实际实现.
+    - [GreyElaina/richuru](https://github.com/GreyElaina/richuru)  
+      一个轻量级的依赖, 为 [`loguru`](https://github.com/Delgan/loguru) 提供 [`rich`](https://github.com/textualize/rich) 强大的终端渲染支持.
+    - [GreyElaina/Mina](https://github.com/GreyElaina/Mina)  
+      基于 `pdm-pep517` 实现的 Monorepo for Python 实现.
+    - **WIP** [kayaku](https://github.com/GraiaProject/kayaku)  
+      强大的配置管理解决方案.
+    - **Planned** [Luma](https://github.com/GraiaProject/Luma)
+      基于 `kayaku` 与 `creart` 等组件, 实现无入口文件的应用实例启动, 为之诞生的 CLI 工具.  
+      亦提供基于现有设施的 Saya 模块的管理, 目前 `pdm` 与 `poetry` 的支持已列入 Roadmap.
 
 ## 改进文档
 
 请到 <https://github.com/GraiaProject/Document/> 为我们的文档提供改进建议.
+
+## 许可协议
+
+<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a><br />本文档采用<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>进行许可。
+
+## 鸣谢
+
+本文档使用 [`Material for MkDocs`](https://squidfunk.github.io/mkdocs-material/) 构建，
+由 [`Netlify`](https://www.netlify.com/)，[`CloudFlare Pages`](https://www.cloudflare.com/) 和 [`ReadTheDocs`](http://readthedocs.org/) 提供免费的托管服务。
+
+## 行为准则
+
+请在 [此处](https://github.com/GraiaProject/.github/blob/master/CODE_OF_CONDUCT.md) 查阅我们的行为准则.
