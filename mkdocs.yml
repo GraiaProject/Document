@@ -44,6 +44,9 @@ copyright: Copyright &copy; Graia Project 2020-2022.
 
 extra:
   social:
+    - icon: netlify
+      link: https://graia.netlify.app/
+      name: Netlify 镜像
     - icon: fontawesome/brands/cloudflare
       link: https://graia.pages.dev/
       name: CloudFlare 镜像
