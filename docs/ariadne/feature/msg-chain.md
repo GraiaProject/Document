@@ -158,7 +158,8 @@ assert message_chain.index(Plain) == 0
 assert message_chain.count(Plain) == 1
 ```
 
-还有继承于 `str` 的 `startswith`, `endswith`, `removeprefix`, `removesuffix`, `replace` 方法, 将在 [进阶篇](/advance/msg-chain) 中讲到.
+还有和 `str` 一脉相承的 `startswith`, `endswith`, `removeprefix`, `removesuffix`, `replace` 方法,
+将在接下来讲到.
 
 ## 多媒体元素
 
