@@ -2,7 +2,8 @@
 
 Avilla 内置了许多种常见的消息元素, 如 `Text`, `Notice`, `Picture` 等.
 
-!!! tip `Text` 其实是由 Graia Amnesia 提供.
+!!! tip
+    `Text` 其实是由 Graia Amnesia 提供.
 
 ## Text - 文本
 
