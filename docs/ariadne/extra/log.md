@@ -8,7 +8,7 @@
 
 !!! info "提示"
 
-    你可以在 [这里] [loguru_api] 找到所有方法, 不过是英文的.
+    你可以在 [这里][loguru_api] 找到所有方法, 不过是英文的.
 
 `logger.remove()` 移除所有记录器. (`logger.remove(0)` 移除预配置的 (`sys.stderr`) 记录器.)
 
@@ -19,5 +19,15 @@
 ```py
 logger.add("{time: YYYY-MM-DD}.log", rotation="00:00", encoding="utf-8")
 ```
+
+如果你想要在某个日志处理器 (handler) 中过滤某个模块（这里以 graia 的模块举例）：
+
+```py
+logger.add("{time: YYYY-MM-DD}.log", rotation="00:00", encoding="utf-8", filter=lambda rec: rec["module"].split(".")[0] != "graia")
+```
+
+!!! warning "注意这样做会直接导致 Ariadne 的消息记录对这个 Handler 失效。"
+
+!!! info "Ariadne 启动时使用的 launart 是一个单独的模块，而不是 `graia.launart`。"
 
 这些都不是很重要, 放在这里只是顺口一提.
