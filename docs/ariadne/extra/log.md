@@ -23,7 +23,7 @@ logger.add("{time: YYYY-MM-DD}.log", rotation="00:00", encoding="utf-8")
 如果你想要在某个日志处理器 (handler) 中过滤某个模块（这里以 graia 的模块举例）：
 
 ```py
-logger.add("{time: YYYY-MM-DD}.log", rotation="00:00", encoding="utf-8", filter=lambda rec: rec["module"].split(".")[0] != "graia")
+logger.add("{time: YYYY-MM-DD}.log", rotation="00:00", encoding="utf-8", filter=lambda rec: rec["name"].split(".")[0] != "graia")
 ```
 
 !!! warning "注意这样做会直接导致 Ariadne 的消息记录对这个 Handler 失效。"
