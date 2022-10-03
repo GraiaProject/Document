@@ -1,10 +1,6 @@
-- Saya
-    - [开始](./saya/start.md)
-    - [使用 Channel](./saya/channel.md)
-    - [跨模块](./saya/cross-module.md)
 - Broadcast
-    - [Depend](./broadcast/depend.md)
     - [中断 - Interrupt](./broadcast/interrupt.md)
+    - [Depend](./broadcast/depend.md)
 - [计划任务](./scheduler.md)
 - [冷却](./cooldown.md)
 - [日志记录](./log.md)

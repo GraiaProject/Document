@@ -14,7 +14,7 @@
 
     每个账号在 `Ariadne` 启动与停止时都会分发一次 `AccountLaunch` 和 `AccountShutdown` 事件.
 
-    使用 `Ariadne.current(special_id)` 可以获取指定账号的 `Ariadne` 实例.
+    使用 `Ariadne.current(account_id)` 可以获取指定账号的 `Ariadne` 实例.
 
 
 ```py

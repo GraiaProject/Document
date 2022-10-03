@@ -65,4 +65,17 @@ async def scheduled_func():
     ...
 ```
 
+### 使用 Launart
+
+截止本文最后更新， `Scheduler` 对 `Launart.current()` 的支持仍然存在问题.
+
+不过，我们可以这样做.
+
+```py
+@channel.use(SchedulerSchema(timer=my_timer))
+async def using_launart(app: Ariadne):
+    launart = app.launch_manager
+    interface = launart.get_interface(AwesomeInterface)
+```
+
 !!! graiax "社区文档相关章节: [链接](https://graiax.cn/guide/scheduler.html)"

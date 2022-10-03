@@ -27,6 +27,25 @@
 
 如果你的 `Ariadne` 只有一个账号, 那么 `Ariadne` 就会自动设置默认账号.
 
+```python
+from graia.ariadne.entry import HttpClientConfig, WebsocketClientConfig, Ariadne
+
+Ariadne.config(default_account=23333333)
+
+Ariadne(
+    12345678,
+    "VerifyKeyZ",
+    HttpClientConfig("http://localhost:21476"),
+    WebsocketClientConfig("http://localhost:21476")
+)
+Ariadne(
+    23333333,
+    "VerifyKeyX",
+    HttpClientConfig("http://localhost:3647"),
+    WebsocketClientConfig("http://localhost:3647")
+)
+```
+
 ## 配置连接
 
 `Ariadne` 并不只支持 `HTTP` 与 `WebSocket` 的正向连接，也不一定需要你的 `mirai-api-http` 在 `http://localhost:8080` 提供服务.

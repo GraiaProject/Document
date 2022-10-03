@@ -24,21 +24,17 @@ from graia.broadcast.interrupt import InterruptControl
 from graia.broadcast.interrupt.waiter import Waiter
 ```
 
-创建 `InterruptControl` 对象:
+获取 `InterruptControl` 对象:
 
-=== "直接创建"
+```py
+import creart
 
-    ```py
-    inc = InterruptControl(broadcast)
-    ```
-
-=== "通过 Ariadne.create"
-
-    ```py
-    inc = AriadneInstance.create(InterruptControl)
-    ```
+inc = creart.it(InterruptControl)
+```
 
 之后创建 `Waiter`:
+
+!!! quote "以下介绍的都是相对底层的用法，建议优先考虑 `方便的封装` 一节提供的封装。"
 
 === "通过函数创建"
 

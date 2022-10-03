@@ -143,7 +143,7 @@ async def on_contain_keyword(chain: MessageChain): # 不会改动消息链
 ```py
 @broadcast.receiver(..., decorators=[MatchContent(content=...)])
 # content: str | MessageChain
-# 当 content 为 str 时, 将会与MessageChain.asDisplay()进行比较, 当 content 为 MessageChain 时, 将会与 MessageChain 进行比较
+# 当 content 为 str 时, 将会与 str(MessageChain) 进行比较, 当 content 为 MessageChain 时, 将会与 MessageChain 进行比较
 async def on_match_content(chain: MessageChain): # 不会改动消息链
     ...
 ```
@@ -152,7 +152,7 @@ async def on_match_content(chain: MessageChain): # 不会改动消息链
 
 检测消息链是否匹配指定正则表达式.
 
-!!! warning "注意 [] 等特殊字符, 因为是使用 `MessageChain.asDisplay` 结果作为匹配源的."
+!!! warning "注意 [] 等特殊字符, 因为是使用 `str(MessageChain)` 结果作为匹配源的."
 
 ### 使用
 
@@ -163,6 +163,18 @@ async def on_match_content(chain: MessageChain): # 不会改动消息链
 async def on_match_regex(chain: MessageChain): # 不会改动消息链
     ...
 ```
+
+## 使用 `RegexGroup` 获取匹配组.
+
+你可以将 `RegexGroup` 作为 `Derive` 对象，或将其作为 `Decorator` 使用.
+
+```py
+@broadcast.receiver(..., decorators=[MatchRegex(regex=r"(?P<size>\d+)d(?P<count>\d+)")]) # regex 参数为 regex 表达式
+async def on_match_regex(
+        size: Annotated[MessageChain, RegexGroup("size")], 
+        count: MessageChain = RegexGroup(2), # RegexGroup("count") 等价
+    ):
+    ...
 
 ## MatchTemplate
 
@@ -191,7 +203,7 @@ async def on_match(chain: MessageChain): # 不会改动消息链
 `Decorator`: 放入 `broadcast.receiver` / `ListenerSchema` 的 `decorators` .
 
 ```py
-@broadcast.receiver(..., decorators=[FuzzyMatch("github"))]) # 默认阈值为 60% 相似
+@broadcast.receiver(..., decorators=[FuzzyMatch("github")]) # 默认阈值为 60% 相似
 async def on_match(chain: MessageChain): # 不会改动消息链
     ...
 ```

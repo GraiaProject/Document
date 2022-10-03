@@ -98,7 +98,7 @@ async def reply1(app: Ariadne, msg: MessageChain, group: Group):
 ## 加入我们
 
 我们非常希望有志之士能帮助完善这个项目, 若你有意参与,
-可前往 [GitHub 组织](https://github.com/GraiaProject/Ariadne) 了解我们的项目体系.
+可前往 [GitHub 组织](https://github.com/GraiaProject/) 了解我们的项目体系.
 
 你可以通过以下几种方式参与进来:
 
