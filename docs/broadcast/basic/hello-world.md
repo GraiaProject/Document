@@ -59,7 +59,7 @@ from graia.broadcast.entities.dispatcher import BaseDispatcher
 class ExampleEvent(Dispatchable):
     class Dispatcher(BaseDispatcher):
         @staticmethod
-        async def catch(self, interface: DispatcherInterface):
+        async def catch(interface: DispatcherInterface):
             pass
 ```
 
