@@ -3,3 +3,4 @@ mkdocs-literate-nav>=0.4.0
 mkdocs-section-index>=0.3.0
 mkdocs-material==8.*
 mkdocs-gen-files>=0.3.5
+pygments>=2.0.0

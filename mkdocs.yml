@@ -19,7 +19,6 @@ theme:
     code: JetBrains Mono
 
   custom_dir: overrides
-
   palette:
     - media: "(prefers-color-scheme: light)"
       scheme: default
@@ -37,6 +36,8 @@ extra_css:
   - "assets/extra.css"
   - "assets/curtain.css"
 
+repo_url: https://github.com/GraiaProject/Document
+repo_name: GraiaProject/Document
 extra_javascript:
   - "assets/admonition.js"
 
@@ -77,7 +78,8 @@ markdown_extensions:
   - pymdownx.critic
   - pymdownx.details
   - pymdownx.inlinehilite
-  - pymdownx.highlight
+  - pymdownx.highlight:
+      use_pygments: true
   - pymdownx.snippets
   - pymdownx.mark
   - pymdownx.smartsymbols
