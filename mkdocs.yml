@@ -84,6 +84,7 @@ markdown_extensions:
   - pymdownx.mark
   - pymdownx.smartsymbols
   - pymdownx.keys
+  - def_list
   - pymdownx.superfences:
       custom_fences:
         - name: mermaid
@@ -116,7 +117,7 @@ plugins:
         python:
           import:
             - https://docs.python.org/zh-cn/3/objects.inv
-            - https://graia.readthedocs.io/projects/ariadne/objects.inv
+            - https://ariadne.api.graia.cn/objects.inv
   - gen-files:
       scripts:
         - ./docs/write_verification.py
