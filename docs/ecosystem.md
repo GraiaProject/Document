@@ -59,7 +59,6 @@ flowchart TB
         subgraph CommunityInfra [基建]
             Nitre("Nitre (图文排版工具）")
             Alconna("Alconna（命令解析器）")
-            KayakuProviders("kayaku 的其他配置源提供者")
             AbstractDataSource("抽象数据源")
         end
 

@@ -49,3 +49,9 @@
 这时你声明 `AbstractClientInterface` 的依赖时，就会自动被认为是依赖于 `AiohttpClientInterface`.
 
 当然，在你没有注入对应的 `Service` 时，`Launart` 会自动报错.
+
+!!!note "配合 Broadcast 使用"
+
+    `Graia Ariadne` 中已经自动注入了 `LaunartInterfaceDispatcher` (0.10.0+)
+    
+    所以你可以直接在事件监听函数中用 `interface: XXXInterface` 获取。
