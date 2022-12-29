@@ -211,6 +211,28 @@ if __name__ == "__main__":
 
 同时你不应该直接使用 `dict` `list` 之类的默认全为 `Any` 的类型作为标注。
 
+### 嵌套的配置
+
+使用 [`dataclasses.dataclass`][dataclasses.dataclass] 装饰的类才能用于嵌套配置。
+
+```py
+from dataclasses import dataclass
+
+
+from kayaku import config
+
+@dataclass
+class RespConfig:
+    format: str
+    at_sender: bool = False
+    quote: bool = False
+
+@config("my_module")
+class ModuleConfig:
+    response: RespConfig
+    api_url: str
+```
+
 ## 在 Saya 模块中使用
 
 ### 注意

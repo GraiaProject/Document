@@ -57,7 +57,7 @@ Graia Project 目前的主要工作是为 Bot Development 提供一系列高效,
       一个轻量级的依赖, 为 [`loguru`](https://github.com/Delgan/loguru) 提供 [`rich`](https://github.com/textualize/rich) 强大的终端渲染支持.
     - [GreyElaina/Mina](https://github.com/GreyElaina/Mina)  
       基于 `pdm-pep517` 实现的 Monorepo for Python 实现.
-    - **WIP** [kayaku](https://github.com/GraiaProject/kayaku)  
+    - [kayaku](https://github.com/GraiaProject/kayaku)  
       强大的配置管理解决方案.
     - **Planned** [Luma](https://github.com/GraiaProject/Luma)
       基于 `kayaku` 与 `creart` 等组件, 实现无入口文件的应用实例启动, 为之诞生的 CLI 工具.  
