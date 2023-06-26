@@ -85,7 +85,7 @@ class ProcessLocker(Dispatcher):
 
 如此一来, `ProcessLocker` 就会保证当 `event` 被 `set` 时, 最多只有 `max_concurrent` 个*最小监听器元*被同时执行.
 
-!!! note 关于 `max_concurrent` 与死锁问题
+!!! note "关于 `max_concurrent` 与死锁问题"
     注意, 当下由于 [GraiaProject/BroadcastControl#61](https://github.com/GraiaProject/BroadcastControl/issues/61),
     如果你的应用过于复杂, 可能会因为 `max_concurrent` 过小而导致死锁, 这个案例很像 `sys.getrecursionlimit`,
     你需要根据你的应用的复杂程度来调整这个参数.
