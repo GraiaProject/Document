@@ -1,10 +1,9 @@
 - [概览](index.md)
 - [为什么是 Avilla ?](why-avilla.md)
 - 基础
-    - [安装 Avilla](basic/installation/index.md)
-        - [拓展：包管理器的使用](basic/installation/package-manager.md)
-        - [使用 Console 部署最小实例](basic/installation/minimum.md)
-        - [配置其他平台](basic/installation/other-platform.md)
+    - 安装与部署
+        - [组件安装](basic/installation/index.md)
+        - [部署最小实例](basic/installation/minimum.md)
     - Hello Avilla
         - [基本介绍](basic/hello-avilla/introduct.md)
         - [协议配置](basic/hello-avilla/protocol-config.md)
@@ -70,7 +69,7 @@
     - [使用 Luma 管理应用组件](best-practice/luma-manage.md)
     - [使用 Luma 发布功能](best-practice/luma-publish.md)
 - 社区
-    - [概述](community/intro.md)
+    - [概述](community/index.md)
     - [生态系统](community/ecosystem.md)
     - [贡献指导](community/contribution.md)
     - [鸣谢](community/thanks.md)
@@ -86,3 +85,4 @@
         - [QQGuild (Official)](other/deploy-protocols/qqguild-official.md)
         - [Console](other/deploy-protocols/console.md)
     - [使用 outbound-onebot11](other/outbound-onebot11.md)
+    - [拓展：包管理器的使用](other/package-manager.md)
