@@ -1,0 +1,10 @@
+
+[project]
+# PEP 621 project metadata
+# See https://www.python.org/dev/peps/pep-0621/
+dependencies = ["mkdocstrings[python]>=0.18.0", "mkdocs-literate-nav>=0.4.0", "mkdocs-section-index>=0.3.0", "mkdocs-material==8.*", "mkdocs-gen-files>=0.3.5", "pygments>=2.0.0"]
+requires-python = ">=3.11"
+
+[build-system]
+requires = ["pdm-backend"]
+build-backend = "pdm.backend"
