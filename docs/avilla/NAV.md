@@ -41,7 +41,8 @@
         - [依赖注入](advance/depend-intro.md)
     - [上下文 (Context) 解读](advance/context-detail.md)
     - [请求与请求事件 (Request)](advance/request-and-event.md)
-    - [深入调查：协议](advance/protocol-platform-account.md)
+    - [深入调查：协议](advance/protocol-account.md)
+    - [平台信息 (Platform)](advance/platform.md)
     - [多平台特性：初识特性标准化 (Standards)](advance/standards-intro.md)
     - Ryanvk 体系
         - [Fn 的初等使用](advance/ryanvk/fn-basic.md)
@@ -78,6 +79,7 @@
 - [常见问题](faq.md)
 - 杂絮
     - 协议端部署指导
+        - [概述](other/deploy-protocols/index.md)
         - [OneBot11 - miraigo/gocqhttp](other/deploy-protocols/miraigo.md)
         - [Elizabeth - mirai-api-http](other/deploy-protocols/mah.md)
         - [Red - BetterQQNT/RedProtocol](other/deploy-protocols/red.md)
