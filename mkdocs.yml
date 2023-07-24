@@ -41,7 +41,7 @@ repo_name: GraiaProject/Document
 extra_javascript:
   - "assets/admonition.js"
 
-copyright: Copyright &copy; Graia Project 2020-2022.
+copyright: Copyright &copy; Graia Project 2020-2023.
 
 extra:
   social:
