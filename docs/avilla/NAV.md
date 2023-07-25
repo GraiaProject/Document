@@ -5,7 +5,6 @@
         - [组件安装](basic/installation/index.md)
         - [部署最小实例](basic/installation/minimum.md)
     - Hello Avilla
-        - [基本介绍](basic/hello-avilla/introduct.md)
         - [协议配置](basic/hello-avilla/protocol-config.md)
         - [事件监听器](basic/hello-avilla/listen.md)
         - [上下文对象 Context](basic/hello-avilla/context-basic.md)
