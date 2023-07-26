@@ -26,6 +26,8 @@ Notice(cx.scene.into("~.member", member=...))
 
 ## NoticeAll
 
+提醒场景（比如群组）里的所有人。
+
 通常需要账号在群组里具有一定权限，否则有可能抛出 `PermissionError`。在不同的平台上可能有不同的限制，如 Tencent QQ 要求一天使用量不能超过 10 次。
 
 实例的构建不需要参数。
