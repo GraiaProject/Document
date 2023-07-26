@@ -60,6 +60,7 @@
     - [Memcache](app-features/memcache.md)
     - [SHAFT](app-features/SHAFT.md)
 - 最佳实践
+    - [使用 Ryanvk 编写多平台逻辑](best-practice/ryanvk-cross-platform/index.md)
     - [使用 Saya 编写简易插件](best-practice/saya-modular.md)
     - [Depend 依赖注入](best-practice/depend.md)
     - [Interrupt 中断](best-practice/interrupt.md)
