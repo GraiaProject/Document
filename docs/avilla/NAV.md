@@ -38,6 +38,7 @@
         - [事件监听与优先级](advance/event-listen-priority.md)
         - [依赖注入](advance/depend-intro.md)
     - [上下文 (Context) 解读](advance/context-detail.md)
+    - [动作 (Activity)](advance/activity.md)
     - [请求与请求事件 (Request)](advance/request-and-event.md)
     - [深入调查：协议](advance/protocol-account.md)
     - [平台信息 (Platform)](advance/platform.md)
@@ -85,3 +86,4 @@
         - [Console](other/deploy-protocols/console.md)
     - [使用 outbound-onebot11](other/outbound-onebot11.md)
     - [拓展：包管理器的使用](other/package-manager.md)
+    - [事件总览](other/events.md)
