@@ -15,7 +15,7 @@
 这些信息足以以一种完善的方式向开发者提供信息，通过 Python 的各式高级特性，
 也能做到像 `cx.scene.send_message` 这种简洁的表示。
 
-这些字段都是 [选择器 (Selector)](/avilla/basic/hello-avilla/selector-basic.md)，
+这些字段都是 [选择器 (Selector)](/avilla/basic/hello-avilla/selector-basic)，
 简单来说，就是对实际对象的一种直观的指代方式。你需要从前文中包含的链接文档了解更多，
 这里给出一个浅显的例子。
 
@@ -37,9 +37,9 @@ Context.self = Selector().land("qq").group("941310484").member(...)
 
 Context 包含以下方法，分别调用 Avilla 的多种抽象功能，你可以在列表项所指向的相应文档中了解详情。
 
-- `Context.fetch`: 拉取资源内容，详见 [资源对象 Resource](/avilla/basic/hello-avilla/resource-basic.md)
-- `Context.pull`: 拉取对象元数据，详见 [元信息 (Metadata) 基本操作](/avilla/basic/metadata-basic.md)
-- `Context.query`: 枚举特定对象，详见 [查询 (Query)](avilla/basic/query.md)
+- `Context.fetch`: 拉取资源内容，详见 [资源对象 Resource](/avilla/basic/hello-avilla/resource-basic)
+- `Context.pull`: 拉取对象元数据，详见 [元信息 (Metadata) 基本操作](/avilla/basic/metadata-basic)
+- `Context.query`: 枚举特定对象，详见 [查询 (Query)](/avilla/basic/query)
 
 此外，为了方便调用，Context 可以有选择的创建 `ContextSelector`，这是一个 Selector 的子类，
 用于快捷的在 Selector 上调用各种 Context 功能。
@@ -101,8 +101,8 @@ cx.scene[Message.send](...)
 
 你可以在以下文档处了解相关详情：
 
-- [Fn 的初等使用](/avilla/advance/ryanvk/fn-basic.md)
-- [上下文 (Context) 解读](advance/context-detail.md)
+- [Fn 的初等使用](/avilla/advance/ryanvk/fn-basic)
+- [上下文 (Context) 解读](/avilla/advance/context-detail)
 
 !!! tip
     通常的，`AvillaEvent` 及其派生子类 (eg. MessageReceived) 都可以直接获取 Context...
