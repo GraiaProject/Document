@@ -23,7 +23,6 @@
         - [消息链与元素](basic/message/chain-and-element.md)
         - [消息解析与匹配器](basic/message/matcher.md)
         - [消息链方法](basic/message/methods.md)
-    - [选择器概述与基本操作](basic/selector-further.md)
     - [过滤器 (Filter)](basic/filter.md)
     - [查询 (Query)](basic/query.md)
     - [资源 (Resource)](basic/resource.md)
@@ -46,6 +45,7 @@
     - Ryanvk 体系
         - [Fn 的初等使用](advance/ryanvk/fn-basic.md)
         - [核心职权 (CoreCapability)](advance/ryanvk/core-capability.md)
+        - [手杖 (Staff)](advance/ryanvk/staff.md)
         - [深入调查：实现](advance/ryanvk/isolate-perform-access.md)
         - [指导：如何选择 Collector](advance/ryanvk/howto-choice-collector.md)
         - [自定义 Fn](advance/ryanvk/fn-further.md)
