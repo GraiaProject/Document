@@ -8,7 +8,7 @@ async def on_message_received(cx: Context, event: MessageReceived):
 
 !!! warning
     当要发送/回复一项消息时（消歧义：并非使用 `reply` 具名形参），请确保你知道你在做什么。
-    根据[这篇文档](avilla/basic/hello-avilla/message-and-event.md)中关于 `scene` 与实际逻辑关系的解释，我们给出以下建议：
+    根据[这篇文档](/avilla/basic/hello-avilla/message-and-event.md)中关于 `scene` 与实际逻辑关系的解释，我们给出以下建议：
 
     - 当你要简单的回复一条消息时，使用 `cx.scene.send_message`；
     - 当你要给对方发送**私聊消息**时，使用 `cx.client.send_message`；
