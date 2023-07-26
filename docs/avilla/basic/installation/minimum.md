@@ -36,7 +36,8 @@ launart.launch_blocking(loop=broadcast.loop)  # 启动应用
     Avilla 由 Launart 与 Graia Amnesia 负责应用实例生命周期的管理，
     上方代码示例中最后一行即是启动 Launart 的主进程。  
 
-    Launart 具有强大的功能，你可以在以下文档中获取更多信息：
+    Launart 具有强大的功能，你可以在以下文档中获取更多信息，
+    但还是建议先将 Avilla 了解个大概后再去：
 
     - [Launart](/other/launart/)
 
