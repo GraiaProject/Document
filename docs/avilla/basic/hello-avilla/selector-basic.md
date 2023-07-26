@@ -23,7 +23,7 @@ Selector().land("qq").group("941310484").member("1846913566")
 我们推荐使用 `Selector.follows` 方法判断一个选择器是否满足要求。
 
 !!! note
-    [过滤器 (Filter)](/avilla/basic/filter.md) 也采用了 `follows-style` 作为推荐使用的高层封装。
+    [过滤器 (Filter)](/avilla/basic/filter) 也采用了 `follows-style` 作为推荐使用的高层封装。
 
 ```python
 if cx.client.follows("::group.member(1234567890)"):

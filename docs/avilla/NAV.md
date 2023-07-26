@@ -19,7 +19,7 @@
         - [启动应用](basic/hello-avilla/launch-app.md)
         - [扩展：使用 Filter](basic/hello-avilla/filter-basic.md)
     - [基础事件](basic/event-basic.md)
-    - [消息 (Message) 与消息事件](basic/message/struct-and-event.md)
+    - 消息 (Message)
         - [消息链与元素](basic/message/chain-and-element.md)
         - [消息解析与匹配器](basic/message/matcher.md)
         - [消息链方法](basic/message/methods.md)
