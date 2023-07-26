@@ -49,10 +49,10 @@
         - [深入调查：实现](advance/ryanvk/isolate-perform-access.md)
         - [指导：如何选择 Collector](advance/ryanvk/howto-choice-collector.md)
         - [自定义 Fn](advance/ryanvk/fn-further.md)
+        - [访问点协议](advance/ryanvk/access-protocol.md)
         - [Fn 应用：本地化文本](advance/ryanvk/fn-app-locale.md)
         - [Fn 应用：调用情况记录](advance/ryanvk/fn-app-statistics.md)
         - [Fn 应用：定制行为](advance/ryanvk/fn-app-custom.md)
-        - [访问点协议](advance/ryanvk/access-protocol.md)
     - [*将目光放向遥远*](advance/farther-and-farther.md)
 - 应用级特性
     - [引言：服务 (Launart Service)](app-features/launart-intro.md)
