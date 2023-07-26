@@ -58,5 +58,4 @@ launart.launch_blocking(loop=broadcast.loop)  # 启动应用
     - [上下文对象 Context](basic/hello-avilla/context-basic)
     - [消息与消息事件](basic/hello-avilla/message-and-event)
     - [发送消息](basic/hello-avilla/message-send)
-    - [启动应用](basic/hello-avilla/launch-app)
   
