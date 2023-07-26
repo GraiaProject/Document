@@ -96,7 +96,7 @@ cx[MessageSend.send](cx.scene, ...)
 cx.scene[Message.send](...)
 ```
 
-对于 `avilla.standard.core`，内置的方法已经尽可能完全涵盖，
+对于 `avilla.standard.core`，内置的方法已经尽可能完全覆盖，
 但如果要调用像 `Nudge` 这样的功能，就需要使用这种方法。
 
 你可以在以下文档处了解相关详情：
