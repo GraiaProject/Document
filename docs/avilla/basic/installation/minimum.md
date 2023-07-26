@@ -17,7 +17,7 @@ avilla = Avilla(broadcast, launart, [ConsoleProtocol()])
 async def on_message_received(cx: Context, event: MessageReceived):
     await cx.scene.send_message("Hello, Avilla!")
 
-launart.launch_blocking(loop=broadcast.loop)
+launart.launch_blocking(loop=broadcast.loop)  # 启动应用
 ```
 
 当你启动应用，你理应会在控制台发现以下界面：
@@ -31,6 +31,14 @@ launart.launch_blocking(loop=broadcast.loop)
 太棒了！于昏暗 (?) 的世界中，Avilla 成功的发出了第一声啼鸣！
 
 可别小瞧了这段代码，基础章节，甚至进阶篇章中的大部分都以这段为基板进行不同程度的扩展，这也是你会碰到的最常见的用户界面。
+
+!!! note
+    Avilla 由 Launart 与 Graia Amnesia 负责应用实例生命周期的管理，
+    上方代码示例中最后一行即是启动 Launart 的主进程。  
+
+    Launart 具有强大的功能，你可以在以下文档中获取更多信息：
+
+    - [Launart](/other/launart/)
 
 ## 接下来做什么
 

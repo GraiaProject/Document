@@ -16,7 +16,6 @@
             - [图片元素 Picture](basic/hello-avilla/element-picture.md)
             - [Notice / NoticeAll](basic/hello-avilla/element-notice.md)
         - [资源对象 Resource](basic/hello-avilla/resource-basic.md)
-        - [启动应用](basic/hello-avilla/launch-app.md)
         - [扩展：使用 Filter](basic/hello-avilla/filter-basic.md)
     - [基础事件](basic/event-basic.md)
     - 消息 (Message)
