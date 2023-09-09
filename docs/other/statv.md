@@ -19,7 +19,7 @@ class ExampleStatus(Statv):
     d = Stats[bool]("stats_d", default=False)
 
     def __init__(self, a: str, b: int, c: str = "cc"):
-        super().__init__({
+        super().__init__(init_stats = {
             "stats_a": a,
             "stats_b": b,
             "stats_c": c
