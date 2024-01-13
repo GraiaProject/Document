@@ -27,7 +27,7 @@ Filter 可以通过这样的方式判断 `Context.client` 是否满足模式 `::
 
 ```python
 @broadcast.receiver(MessageReceived, dispatcher=[
-    Filter.cx().client.follows("::group.member")
+    Filter.cx.client.follows("::group.member")
 ])
 async def on_message_received(cx: Context):
     ...
@@ -48,7 +48,7 @@ async def on_message_received(cx: Context):
 not_ = lambda x: lambda y: not x(y)
 
 @broadcast.receiver(MessageReceived, dispatcher=[
-    Filter.cx().client.all(
+    Filter.cx.client.all(
         valid_access,
         service_alive,
         validated_user,
